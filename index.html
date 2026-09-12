@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>波气弦理论 · 科研工作室</title>
+    <style>
+:root {
+--primary-color: #0d1b2a;
+--accent-color: #1b9aaa;
+--bg-color: #f8f9fa;
+--card-bg: #ffffff;
+--text-color: #212529;
+--text-secondary: #6c757d;
+--border-color: #dee2e6;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.7;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2.5rem 0;
+    text-align: center;
+    border-bottom: 5px solid var(--accent-color);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Navigation */
+.nav-tabs {
+    display: flex;
+    justify-content: center;
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-tabs button {
+    padding: 1rem 1.5rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.nav-tabs button:hover {
+    color: var(--accent-color);
+}
+
+.nav-tabs button.active {
+    color: var(--accent-color);
+    border-bottom-color: var(--accent-color);
+    font-weight: 600;
+}
+
+/* Main Content */
+main {
+    padding: 3rem 0;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+}
+
+.card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.card a {
+    display: inline-block;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+/* 链接组样式 */
+.link-group {
+    display: flex;
+    gap: 30px;          /* 同一行两个链接之间的间隔 */
+    margin-top: 15px;   /* 链接组与上方的间隔 */
+}
+.link-container {
+    display: flex;
+    flex-wrap: wrap;  / 关键：允许换行 /
+    gap: 30px;        / 链接之间的间隔 /
+    margin-top: 15px;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #e9ecef;
+    color: var(--text-secondary);
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.math-desc {
+color: #000000;
+font-size: 0.95rem;
+text-align: justify;
+}
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}
+
+footer .hash-info {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    background-color: rgba(0,0,0,0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    margin: 1rem auto;
+    max-width: 600px;
+    word-break: break-all;
+    font-size: 0.8rem;
+}
+</style>
+</head>
+<body>
+    <!DOCTYPE html>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>波气弦理论 · 科研工作室</title>
+    <style>
+
+:root {
+--primary-color: #0d1b2a;
+--accent-color: #1b9aaa;
+--bg-color: #f8f9fa;
+--card-bg: #ffffff;
+--text-color: #212529;
+--text-secondary: #6c757d;
+--border-color: #dee2e6;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.7;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2.5rem 0;
+    text-align: center;
+    border-bottom: 5px solid var(--accent-color);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Navigation */
+.nav-tabs {
+    display: flex;
+    justify-content: center;
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-tabs button {
+    padding: 1rem 1.5rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.nav-tabs button:hover {
+    color: var(--accent-color);
+}
+
+.nav-tabs button.active {
+    color: var(--accent-color);
+    border-bottom-color: var(--accent-color);
+    font-weight: 600;
+}
+
+/* Main Content */
+main {
+    padding: 3rem 0;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* 1修改为3，就成3列 */
+    gap: 1.5rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+}
+
+.card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.card a {
+    display: inline-block;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #e9ecef;
+    color: var(--text-secondary);
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}
+
+footer .hash-info {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    background-color: rgba(0,0,0,0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    margin: 1rem auto;
+    max-width: 600px;
+    word-break: break-all;
+    font-size: 0.8rem;
+}
+        .style1
+        {
+            font-size: large;
+            font-weight: bold;
+        }
+    </style>
+    <header>
+    <div class="container">
+        波气弦理论 · 学术门户基于“气”的完备公理体系，融合拓扑动力学与数论，探索从微观粒子到宏观宇宙的统一描述。 
+    </div>
+</header>
+    <nav class="nav-tabs">
+    <button class="tab-link active" data-tab="riemann">
+        千禧年难题论证
+    </button>
+    <button class="tab-link" data-tab="axioms">
+        数学物理
+    </button>
+    <button class="tab-link" data-tab="applications">
+        生物医学
+    </button>
+    <button class="tab-link" data-tab="archive">
+        构想及预测
+    </button>
+    <button class="tab-link" data-tab="mid_stu">
+        中学生指南
+    </button>
+
+</nav>
+    <main class="container">
+    <div id="riemann" class="tab-content active">
+        核心成果：使用波气弦理论，对千禧年问题：黎曼猜想、杨-米尔斯存在性与质量间隙、纳维-斯托克斯方程解的存在性与光滑性、霍奇猜想、P vs NP 
+        问题、贝赫和斯维讷通-戴尔猜想、庞加莱猜想进行了全新证明路径。<br />
+        证明思路是：<b>先用波气弦理论进行初步构思、然后进一步论证，最后按千禧年要求进行最终证明</b>。 
+        <div class="card-grid">
+            <div class="card">
+                <span class="style1">黎曼猜想</span><br>
+                <p class="math-desc">素数分布与临界线的纠缠，本质上是气样式克莱因瓶上不可定向闭弦的驻波稳定条件。波气弦理论将黎曼ζ函数非平凡零点视为闭弦振动的本征频率谱。借助旋影 倒弦对偶与分形嵌套，零点虚部对应锁相事件的本征频率，临界线 ℜ(s)=1/2 是莫比乌斯半周翻转与指数相位衰减相互抵消的唯一平衡点。该论证在波气弦公理体系内完成闭环，给出素数分布与拓扑动力学的精确对应。</p>
+               
+                <b>初步构思</b> <br> 
+                             <a href="黎曼猜想\1 e与φ拓扑增长下的素数分布.pdf" style="margin-right: 50px" target="_blank">1 e与φ拓扑增长下的素数分布 (PDF)</a> <a href="黎曼猜想\1 e与φ拓扑增长下的素数分布.pdf.ots"  target="_blank">时间戳证明文件</a><br> 
+                             <a href="黎曼猜想\2 eφ导航与旋影精修素数分布.pdf" style="margin-right: 50px" target="_blank">2 eφ导航与旋影精修素数分布(PDF)</a> <a href="黎曼猜想\2 eφ导航与旋影精修素数分布.pdf.ots"  target="_blank">时间戳证明文件</a><br> 
+                             <a href="黎曼猜想\3 波气弦试证明黎曼猜想.pdf"  style="margin-right: 80px" target="_blank">3 波气弦试证明黎曼猜想 (PDF)</a> </a> <a href="黎曼猜想\3 波气弦试证明黎曼猜想.pdf.ots"  target="_blank">时间戳证明文件</a><br> 
+                <br>
+                <b>进一步论证</b>  <br> 
+                             <a href="黎曼猜想\01 《波气弦试证明黎曼猜想》原文缺陷分析与修订.pdf" style="margin-right: 220px" target="_blank">01 《波气弦试证明黎曼猜想》原文缺陷分析与修订 (PDF)</a> <a href="黎曼猜想\01 《波气弦试证明黎曼猜想》原文缺陷分析与修订.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                             <a href="黎曼猜想\02 填补波气弦框架下黎曼猜想的关键缺口：从拓扑驻波模型到 ζ 函数解析约束.pdf" style="margin-right: 50px" target="_blank">02 填补波气弦框架下黎曼猜想的关键缺口：从拓扑驻波模型到 ζ 函数解析约束(PDF)</a> <a href="黎曼猜想\02 填补波气弦框架下黎曼猜想的关键缺口：从拓扑驻波模型到 ζ 函数解析约束.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                             <a href="黎曼猜想\03 波气弦理论下黎曼猜想：从拓扑诠释框架到解析约束推演.pdf" style="margin-right: 170px" target="_blank">03 波气弦理论下黎曼猜想：从拓扑诠释框架到解析约束推演(PDF)</a> <a href="黎曼猜想\03 波气弦理论下黎曼猜想：从拓扑诠释框架到解析约束推演.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                             <a href="黎曼猜想\4 波气弦尝试走向ZFC公理体系下黎曼猜想的无条件证明.pdf" style="margin-right: 190px" target="_blank">4 波气弦尝试走向ZFC公理体系下黎曼猜想的无条件证明(PDF)</a> <a href="黎曼猜想\4 波气弦尝试走向ZFC公理体系下黎曼猜想的无条件证明.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                <br>
+                <b>最终证明</b>   <br> 
+                             <a href="黎曼猜想\5 从波气弦框架推演到ZFC公理体系下黎曼猜想证明的路径探索.pdf" style="margin-right: 50px" target="_blank">5 从波气弦框架推演到ZFC公理体系下黎曼猜想证明的路径探索(PDF)</a> <a href="黎曼猜想\5 从波气弦框架推演到ZFC公理体系下黎曼猜想证明的路径探索.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                             <a href="黎曼猜想\6 波气弦理论对黎曼猜想的推导：ZFC集合论翻译遇到的困境.pdf" style="margin-right: 60px"  target="_blank">6 波气弦理论对黎曼猜想的推导：ZFC集合论翻译遇到的困境(PDF)</a> <a href="黎曼猜想\6 波气弦理论对黎曼猜想的推导：ZFC集合论翻译遇到的困境.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                             <a href="黎曼猜想\黎曼猜想、ZFC与波气弦理论：一个关于数学语言的翻译问题.pdf"  style="margin-right: 60px" target="_blank">黎曼猜想、ZFC与波气弦理论：一个关于数学语言的翻译问题(PDF)</a> <a href="黎曼猜想\黎曼猜想、ZFC与波气弦理论：一个关于数学语言的翻译问题.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                <br>
+                <b>证明黎曼猜想的意外收获</b> <br>
+                             <a href="黎曼猜想\波气弦理论中的e-φ统一公式：黎曼猜想背后的数-形同源结构.pdf"  style="margin-right: 70px" target="_blank">波气弦理论中的e-φ统一公式：黎曼猜想背后的数-形同源结构(PDF)</a> <a href="黎曼猜想\波气弦理论中的e-φ统一公式：黎曼猜想背后的数-形同源结构.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                             <a href="波气弦理论中的e-φ统一公式：静态马拉约拿任意子的存在性判据.pdf"  style="margin-right: 50px" target="_blank">波气弦理论中的e-φ统一公式：静态马拉约拿任意子的存在性判据(PDF)</a> <a href="黎曼猜想\波气弦理论中的e-φ统一公式：静态马拉约拿任意子的存在性判据.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+             
+
+            </div>
+            <div class="card">
+                <span class="style1">杨-米尔斯存在性与质量间隙 </span><br>
+                
+                <p class="math-desc">规范场的质量间隙来源于不可定向纤维丛上的横纵波干涉冻结。波气弦理论将杨-米尔斯场强重新诠释为气丛上旋影（纵波）与倒弦（横波）的干涉张量；质量不作为拉格朗日裸项，而是强耦合区域拓扑缺陷锁定时横纵波比被刚性冻结所产生的涌现标量。分形嵌套生成元保证构型集合非空且能隙严格为正，为希尔伯特-波利亚算子的几何实现提供显式构造。</p>
+                <b>初步构思</b> <br> 
+                   <a href="杨-米尔斯\波气弦理论试解杨-米尔斯存在性与质量缺口.pdf"  style="margin-right: 70px" target="_blank">波气弦理论试解杨-米尔斯存在性与质量缺口(PDF)</a> <a href="杨-米尔斯\波气弦理论试解杨-米尔斯存在性与质量缺口.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                <b>进一步论证 </b> <br>  
+                   <a href="杨-米尔斯\对《波气弦理论试解杨-米尔斯存在性与质量缺口》的梳理、问题剖析与改写方案.pdf"  style="margin-right: 70px" target="_blank">对《波气弦理论试解杨-米尔斯存在性与质量缺口》的梳理、问题剖析与改写方案(PDF)</a> <a href="杨-米尔斯\对《波气弦理论试解杨-米尔斯存在性与质量缺口》的梳理、问题剖析与改写方案.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                   <a href="杨-米尔斯\再对《波气弦理论试解杨-米尔斯存在性与质量缺口》文本讨论.pdf"  style="margin-right: 190px" target="_blank">再对《波气弦理论试解杨-米尔斯存在性与质量缺口》文本讨论(PDF)</a> <a href="杨-米尔斯\再对《波气弦理论试解杨-米尔斯存在性与质量缺口》文本讨论.pdf.ots"  target="_blank">时间戳证明文件</a><br> 
+                   <a href="杨-米尔斯\波气弦第二次解 杨‑米尔斯存在性与质量缺口.pdf"  style="margin-right: 300px" target="_blank">波气弦第二次解 杨‑米尔斯存在性与质量缺口(PDF)</a> <a href="杨-米尔斯\波气弦第二次解 杨‑米尔斯存在性与质量缺口.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                <b>最终证明</b> <br>    
+                   <a href="杨-米尔斯\波气弦第三次解杨-米尔斯存在性与质量缺口.pdf"  style="margin-right: 210px" target="_blank">波气弦第三次解杨-米尔斯存在性与质量缺口(PDF)</a> <a href="杨-米尔斯\波气弦第三次解杨-米尔斯存在性与质量缺口.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                   <a href="杨-米尔斯\波气弦理论解杨-米尔斯存在性与质量间隙 与千禧年问题标准格式对接.pdf"  style="margin-right: 50px" target="_blank">波气弦理论解杨-米尔斯存在性与质量间隙 与千禧年问题标准格式对接(PDF)</a> <a href="杨-米尔斯\波气弦理论解杨-米尔斯存在性与质量间隙 与千禧年问题标准格式对接.pdf.ots"  target="_blank">时间戳证明文件</a><br> 
+                   <a href="杨-米尔斯\波气弦-OS框架的严格数学化展开.pdf"  style="margin-right: 210px" target="_blank">杨-米尔斯\波气弦-OS框架的严格数学化展开(PDF)</a> <a href="杨-米尔斯\波气弦-OS框架的严格数学化展开.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                 <b>部分参考资料</b> <br> 
+                   <a href="杨-米尔斯\波气弦理论完备公理体系.pdf"  style="margin-right: 70px" target="_blank">波气弦理论完备公理体系(PDF)</a> <a href="杨-米尔斯\波气弦理论完备公理体系.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                   <a href="杨-米尔斯\波气弦理论：天气与地气.pdf"  style="margin-right: 80px" target="_blank">波气弦理论：天气与地气(PDF)</a> <a href="杨-米尔斯\波气弦理论：天气与地气.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                </div>
+            <div class="card">
+                <span class="style1">纳维-斯托克斯方程解的存在性与光滑性 </span> <br>
+                 <p class="math-desc">流体速度场被分解为旋影（纵波）与倒弦（横波）的正交叠加，Gyroid极小曲面作为紧致拓扑容器施加切向约束。最小作用量原理确保速度场自然贴合Gyroid流形，不可压缩性成为几何必然；旋影-倒弦 π/2 相位差通过干涉相消机制一致压制速度梯度，排除有限时间爆破。在拓扑约束流形上完成能量估计与Bootstrap自举，保证全局光滑性并可共形拉回至R^3</p>
+                <b>初步构思</b> <br> 
+                   <a href="纳维-斯托克斯\1 纳维-斯托克斯方程解的存在性与光滑性.pdf"  style="margin-right: 170px" target="_blank">1 纳维-斯托克斯方程解的存在性与光滑性(PDF)</a> <a href="纳维-斯托克斯\1 纳维-斯托克斯方程解的存在性与光滑性.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                   <a href="纳维-斯托克斯\2 纳维-斯托克斯方程解的存在性与光滑性：基于波气弦理论的拓扑-波动学证明.pdf"  style="margin-right: 50px" target="_blank">2 纳维-斯托克斯方程解的存在性与光滑性：基于波气弦理论的拓扑-波动学证明(PDF)</a> <a href="2 纳维-斯托克斯方程解的存在性与光滑性：基于波气弦理论的拓扑-波动学证明.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+
+                <b>进一步论证 </b> <br>  
+                   <a href="纳维-斯托克斯\3波气弦第二次解纳维‑斯托克斯方程解的存在性与光滑性.pdf"  style="margin-right: 60px" target="_blank">3波气弦第二次解纳维‑斯托克斯方程解的存在性与光滑性(PDF)</a> <a href="3波气弦第二次解纳维‑斯托克斯方程解的存在性与光滑性.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                   <a href="纳维-斯托克斯\4纳维‑斯托克斯方程全局光滑解的存在性证明.pdf"  style="margin-right: 130px" target="_blank">4纳维‑斯托克斯方程全局光滑解的存在性证明(PDF)</a> <a href="4纳维‑斯托克斯方程全局光滑解的存在性证明.pdf.ots"  target="_blank">时间戳证明文件</a><br> 
+                <b>最终证明</b> <br>    
+                   <a href="纳维-斯托克斯\5纳维-斯托克斯方程全局光滑解的存在性完整证明.pdf"  style="margin-right: 100px" target="_blank">5纳维-斯托克斯方程全局光滑解的存在性完整证明(PDF)</a> <a href="纳维-斯托克斯\5纳维-斯托克斯方程全局光滑解的存在性完整证明.pdf.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                <b>纳维-斯托克斯方程的适用范围</b> <br> 
+                <a href="纳维-斯托克斯\波气弦视域下的纳维-斯托克斯方程再审视.pdf"  style="margin-right: 150px" target="_blank">波气弦视域下的纳维-斯托克斯方程再审视(PDF)</a> <a href="纳维-斯托克斯\波气弦视域下的纳维-斯托克斯方程再审视.pdf.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                <b>部分参考资料</b> <br>    
+                   <a href="纳维-斯托克斯\波气弦理论推导广义相对论引力场方程.pdf"  style="margin-right: 170px" target="_blank">波气弦理论推导广义相对论引力场方程(PDF)</a> <a href="纳维-斯托克斯\波气弦理论推导广义相对论引力场方程.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                   <a href="纳维-斯托克斯\波气弦理论视域下三类拓扑几何体的统一推演及生物演化、中医取象机理探究.pdf"  style="margin-right: 50px" target="_blank">波气弦理论视域下三类拓扑几何体的统一推演及生物演化、中医取象机理探究(PDF)</a> <a href="波气弦理论视域下三类拓扑几何体的统一推演及生物演化、中医取象机理探究.pdf.ots"  target="_blank">时间戳证明文件</a><br>
+
+            </div>
+            <div class="card">
+                <span class="style1">霍奇猜想  </span>  <br>
+                <p class="math-desc"> 复射影代数簇上的霍奇类与代数闭链，在高维气丛底层共享同一套“有无锁相”拓扑事件集合。波气弦理论以“连续与离散是观测截面选取所产生的表象”为出发点，证明调和微分形式（连续表象）与代数闭链（离散表象）的区别仅在于粗粒化尺度与投影截面；通过Gyroid周期胞腔剖分，任意霍奇类均可展开为胞腔指示函数的有理加权和，对应闭链的有理组合，霍奇猜想成为气丛共形投影下的必然推论。</p>
+                <b>初步构思</b> <br> 
+                   <a href="霍奇猜想\1有无变化与霍奇猜想证明.pdf"  style="margin-right: 85px" target="_blank">有无变化与霍奇猜想证明(PDF)</a> <a href="霍奇猜想\1有无变化与霍奇猜想证明.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+
+                <b>进一步论证 </b> <br>  
+                   <a href="霍奇猜想\2波气弦第二次论证霍奇猜想.pdf"  style="margin-right: 70px" target="_blank">波气弦第二次论证霍奇猜想(PDF)</a> <a href="霍奇猜想\2波气弦第二次论证霍奇猜想.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                <b>最终证明</b> <br>    
+                   <a href="霍奇猜想\3波气弦第三次论证霍奇猜想.pdf"  style="margin-right: 70px" target="_blank">波气弦第三次论证霍奇猜想(PDF)</a> <a href="霍奇猜想\3波气弦第三次论证霍奇猜想.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+            </div>
+          <div class="card">
+                <span class="style1">P vs NP问题</span><br>
+                <p class="math-desc">确定性图灵机的计算过程等价于气在不可定向纤维丛上的单路径时序投影。NP验证是局部截面读取（多项式可行），P确定性求解是全局双面锁相遍历。莫比乌斯环不可定向性（w_1\neq0）造成单一路径无法同时获取拓扑正反两面互补缺陷信息；复制系统、对偶投影、逆向回溯三种获取双面信息的手段均引入指数级开销，据此证明 P\ \neq NP。 </p>
+                <b>初步构思</b> <br> 
+                   <a href="P vs NP问题\1波气弦证明P≠NP.pdf"  style="margin-right: 135px" target="_blank">波气弦证明P≠NP(PDF)</a> <a href="P vs NP问题\1波气弦证明P≠NP.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                   <a href="P vs NP问题\2硬币与镜子：P≠NP的拓扑证明.pdf"  style="margin-right: 50px" target="_blank">硬币与镜子：P≠NP的拓扑证明(PDF)</a> <a href="P vs NP问题\2硬币与镜子：P≠NP的拓扑证明.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                   <a href="P vs NP问题\3虚实之辩：P≠NP的拓扑证明.pdf"  style="margin-right: 65px" target="_blank">虚实之辩：P≠NP的拓扑证明(PDF)</a> <a href="P vs NP问题\3虚实之辩：P≠NP的拓扑证明.pdf.ots"  target="_blank">时间戳证明文件</a><br> 
+                <b>进一步论证 </b> <br>  
+                   <a href="P vs NP问题\4波气弦第四次论证：P vs NP.pdf"  style="margin-right: 55px" target="_blank">波气弦第四次论证 P vs NP.pdf(PDF)</a> <a href="P vs NP问题\4波气弦第四次论证：P vs NP.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                <b>最终证明</b> <br>    
+                   <a href="P vs NP问题\5波气弦第五次论证：P vs NP.pdf"  style="margin-right: 70px" target="_blank">波气弦第五次论证 P vs NP(PDF)</a> <a href="P vs NP问题\5波气弦第五次论证：P vs NP.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+            </div>
+            <div class="card">
+                <span class="style1">贝赫和斯维讷通-戴尔猜想</span><br>
+                <p class="math-desc">椭圆曲线的有理点群对应气样式莫比乌斯环上不可收缩闭路的锁相事件集合。Mordell Weil秩等于高维流形第一同调群秩；Hasse Weil L 函数在 s=1 的零点阶数由调和零模态数决定。Tate Shafarevich群的有限性由气弦场方程 \nabla^2q=\rho q\left(1-q^2\right) 的拓扑缺陷自干涉相消保证，其阶数受精细结构常数 \alpha约束。BSD强形式成为高维不可定向纤维丛投影到二维代数簇后的拓扑不变量恒等式。</p>
+                <b>初步构思</b> <br> 
+                   <a href="贝赫和戴尔猜想\1高维拓扑投影解BSD猜想.pdf"  style="margin-right: 150px" target="_blank">高维拓扑投影解BSD猜想(PDF)</a> <a href="贝赫和戴尔猜想\1高维拓扑投影解BSD猜想.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                <b>进一步论证 </b> <br>  
+                   <a href="贝赫和戴尔猜想\2波气弦第二次解贝赫和斯维讷通‑戴尔猜想.pdf"  style="margin-right: 50px" target="_blank">波气弦第二次解贝赫和斯维讷通‑戴尔猜想(PDF)</a> <a href="贝赫和戴尔猜想\2波气弦第二次解贝赫和斯维讷通‑戴尔猜想.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                <b>最终证明</b> <br>    
+                   <a href="贝赫和戴尔猜想\3波气弦第三次解贝赫和斯维讷通 戴尔猜想.pdf"  style="margin-right: 50px" target="_blank">波气弦第三次解贝赫和斯维讷通 戴尔猜想(PDF)</a> <a href="贝赫和戴尔猜想\3波气弦第三次解贝赫和斯维讷通 戴尔猜想.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                 <b>部分参考资料</b> <br> 
+                   <a href="贝赫和戴尔猜想\波气弦分形嵌套理论：拓扑-倾斜-轨道与物理常数的本质统一.pdf"  style="margin-right: 70px" target="_blank">气弦分形嵌套理论：拓扑-倾斜-轨道与物理常数的本质统一(PDF)</a> <a href="贝赫和戴尔猜想\波气弦分形嵌套理论：拓扑-倾斜-轨道与物理常数的本质统一.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+            </div>
+            <div class="card">            
+                <span class="style1">庞加莱猜想</span><br />
+                <p class="math-desc">单连通紧致三维流形与三维球面同胚，在波气弦理论中是气样式克莱因瓶在三维截面上的闭包唯一性定理。旋影 倒弦对偶在三维不可定向闭流形上的正交干涉，强制所有非收缩闭路均具有可收缩的锁相补偿，等价于基本群平凡。该结论推广了Ricci流方法，将几何化过程归约到咬尾系数 q在闭流形上的全局稳态分布，给出三维拓扑分类的波动学判据。 </p>
+                <b>初步构思</b> <br> 
+                   <a href="庞加莱猜想\波气弦证庞加莱猜想 第一次证明.pdf"  style="margin-right: 70px" target="_blank">波气弦证庞加莱猜想 第一次证明(PDF)</a> <a href="庞加莱猜想\波气弦证庞加莱猜想 第一次证明.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                   <a href="庞加莱猜想\庞加莱猜想两证法对比.pdf"  style="margin-right: 130px" target="_blank">庞加莱猜想两证法对比(PDF)</a> <a href="庞加莱猜想\庞加莱猜想两证法对比.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+
+                <b>进一步论证 </b> <br>  
+                   <a href="庞加莱猜想\波气弦升维分形解庞加莱  第二次证明.pdf"  style="margin-right: 40px" target="_blank">波气弦升维分形解庞加莱  第二次证明(PDF)</a> <a href="庞加莱猜想\波气弦升维分形解庞加莱  第二次证明.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+                <b>最终证明</b> <br>    
+                   <a href="庞加莱猜想\波气弦 第三次证明 庞加莱猜想.pdf"  style="margin-right: 80px" target="_blank">波气弦 第三次证明 庞加莱猜想(PDF)</a> <a href="庞加莱猜想\波气弦 第三次证明 庞加莱猜想.pdf.ots"  target="_blank">时间戳证明文件</a><br>  
+            </div>
+        </div>
+    </div>
+<!-- 公理体系构建 Tab -->
+    <div id="axioms" class="tab-content">
+       
+    </div>
+
+<!-- 应用案例库 Tab -->
+    <div id="applications" class="tab-content">
+      
+    </div>
+
+<!-- 构想及预测 Tab -->
+    <div id="archive" class="tab-content">
+        <h2>
+            构想及预测 · 完整索引</h2>
+        <p>
+            收录波气弦理论相关的全部研究手稿、推导笔记与实验记录，按时间或主题分类。</p>
+        
+        <div class="card">
+            <h3>
+                文献索引目录 (示例)</h3>
+            <p>
+                1. 《波气弦理论导论：从哲学到数学》</p>
+            <p>
+                2. 《拓扑动力学中的 $e/\phi$ 耦合机制研究》</p>
+            <p>
+                3. 《旋影几何与高维投影的数学描述》</p>
+            <p>
+                4. 《基于波气弦的量子引力初探》</p>
+            <p>
+                ... (此处可链接至具体的Markdown文档或PDF列表)</p>
+            <a href="#">浏览完整文献列表</a>
+        </div>       
+    </div>
+</main>
+    <footer>
+    <div class="container">
+        © 2026 波气弦理论研究中心 | 原创学术成果，保留所有权利&nbsp;
+    </div>
+</footer>
+    <script>
+// Tab 切换逻辑
+document.addEventListener('DOMContentLoaded', function() {
+const tabs = document.querySelectorAll('.tab-link');
+const contents = document.querySelectorAll('.tab-content');
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        const targetTab = tab.getAttribute('data-tab');
+
+        // 移除所有active类
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+
+        // 添加当前active类
+        tab.classList.add('active');
+        document.getElementById(targetTab).classList.add('active');
+    });
+});
+});
+    </script>
+</body>
+</html>
